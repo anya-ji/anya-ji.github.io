@@ -1,26 +1,70 @@
 .App {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   background-color: #27292a;
-  /* padding: 5%; */
-  /* overflow: auto; */
+  padding: 10%;
+  overflow: visible;
+}
+
+@media only screen and (max-width: 800px) {
+  .App {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 40%;
+  min-width: 300px;
+  padding: 2% 0 2% 0;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 60%;
+  min-width: 400px;
 }
 
 .letter {
   color: #ffffff;
-  font-family: "Courier";
+  font-family: "Arial";
   text-align: left;
-  font-size: 15px;
+  font-size: 18px;
 }
 
 .title {
   color: #ffffff;
-  font-family: "Arial Black";
+  font-family: "Arial";
   text-align: left;
-  font-size: 18px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.centered-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu {
+  margin-top: 10%;
+}
+
+.centered-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .click:hover {

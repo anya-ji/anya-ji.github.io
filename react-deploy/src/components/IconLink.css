@@ -1,0 +1,18 @@
+.icon-link {
+  color: lightgrey;
+  margin: 0 12px 0 0;
+  font-size: 18px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 8px 0 4px;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+  font-weight: 600;
+}
+
+.icon-link:hover {
+  background-color: #ffffff3f;
+  color: white;
+  text-decoration: none;
+}
