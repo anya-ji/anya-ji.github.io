@@ -29,6 +29,7 @@ const Projects = () => {
           <IconLink url="https://github.com/anya-ji/triviac" text="GitHub" />
         </Col>
       </Row>
+      <br />
       <Row className="player-wrapper justify-content-center">
         <ReactPlayer
           className="react-player"
