@@ -1,4 +1,3 @@
-import "bootstrap/dist/css/bootstrap.min.css";
 import React, { Component } from "react";
 import About from "./About";
 import Others from "./Others";

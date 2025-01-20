@@ -1,4 +1,3 @@
-import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import { Col, Image, Row } from "react-bootstrap";
 import ReactPlayer from "react-player";

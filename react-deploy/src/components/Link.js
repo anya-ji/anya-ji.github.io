@@ -4,7 +4,7 @@ const Link = ({ url, text, children, style }) => {
   return (
     <a
       href={url}
-      style={style ?? { color: "burlywood" }}
+      style={style ?? { color: "#63c2e8" }}
       target="_blank"
       rel="noreferrer noopener"
     >

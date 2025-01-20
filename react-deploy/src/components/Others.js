@@ -6,12 +6,12 @@ const Others = () => {
   return (
     <p className="letter">
       In my free time, I do ballet and I'm recently learning figure skating. I
-      share good food and awful cooking at{" "}
+      have a{" "}
       <Link
         url="https://www.instagram.com/goblinmunches/"
-        text="@goblinmunches"
-      ></Link>
-      .
+        text="food blog"
+      ></Link>{" "}
+      where I post good food and some awful cooking.
     </p>
   );
 };

@@ -1,4 +1,3 @@
-import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import { Col, Image, Row } from "react-bootstrap";
 import tangram from "../assets/tangram.png";
@@ -46,7 +45,7 @@ const Research = () => {
 
           <p className="letter">
             Anya Ji, Noriyuki Kojima, Noah Rush, Alane Suhr, Wai Keen Vong,
-            Robert D. Hawkins, and Yoav Artzi.
+            Robert D. Hawkins, Yoav Artzi
             <br />
             <Tag text="EMNLP 2022 Best Long Paper"></Tag>
           </p>
