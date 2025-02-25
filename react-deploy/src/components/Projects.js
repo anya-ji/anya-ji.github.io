@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Image, Row } from "react-bootstrap";
 import ReactPlayer from "react-player";
-import mercury from "../assets/mercury.png";
+import prototype from "../assets/prototype.jpg";
 import quolesomeness from "../assets/quolesomeness.png";
 import triviac from "../assets/triviac.jpg";
 import wholesome from "../assets/wholesome.png";
@@ -15,11 +15,11 @@ const Projects = () => {
   return (
     <div className="projects-container">
       <Row className="pt-4">
-        <Image src={triviac} roundedCircle height="100px" />
+        <Image src={triviac} roundedCircle height="100px" width="100px" />
         <Col>
           <p className="title">Triviac - Trivia games</p>
           <p className="letter">
-            An iOS app for generating, playing, and archiving single- or
+            An iOS app for generating, playing, and saving single- or
             multi-player trivia games.
             <br />
             <Tag text="UIKit"></Tag>
@@ -40,57 +40,37 @@ const Projects = () => {
       </Row>
 
       <Row className="pt-4">
-        <Image src={mercury} roundedCircle height="100px" />
+        <Image src={prototype} roundedCircle height="100px" width="100px" />
         <Col>
-          <p className="title">Mercury - Online office hours </p>
+          <p className="title">Pancake Printer</p>
           <p className="letter">
-            All-in-one platform for better online office hours experiences!
-            Supports separate roles for students and TAs, queuing, and
-            video/audio conferencing.
+            A pancake printer that can be controlled with a joystick to print any
+            shape of pancake you like - and it despenses rainbow sprinkles with
+            a push of a button. Equipped with motorized printer structure
+            inspired by 3D printers, motion control system powered by Arduino,
+            laser cut nozzle box, custom modeled and 3D printed frame connectors
+            and sprinkles dispenser.
             <br />
-            <Tag text="ReactJS"></Tag>
-            <Tag text="PostgreSQL"></Tag>
+            <Tag text="Arduino"></Tag>
+            <Tag text="CAD"></Tag>
+            <Tag text="Laser Cutting"></Tag>
+            <Tag text="3D Printing"></Tag>
           </p>
-          <IconLink url="https://github.com/MercuryOH/mercury" text="GitHub" />
+          <IconLink
+            url="https://www.youtube.com/watch?v=fjZnILbN7NU"
+            text="YouTube"
+          />
         </Col>
       </Row>
       <br />
       <Row className="player-wrapper justify-content-center">
         <ReactPlayer
           className="react-player"
-          url="video/mercury_demo.mp4"
-          controls={true}
+          url="video/printer_demo.mp4"
+          controls={false}
+          loop
+          playing
         />
-      </Row>
-
-      <br />
-
-      <Row className="pt-4">
-        <Image src={women} roundedCircle height="100px" />
-        <Col>
-          <p className="title">Health Friend</p>
-          <p className="letter">
-            A tablet game developed at{" "}
-            <Link
-              url="https://www.cornellewh.org/"
-              text="Cornell Engineering World Health"
-            ></Link>{" "}
-            to help women in low-resource areas in India to learn about their
-            own bodies and menstrual health, partnered with Barefoot College in
-            India.
-            <br />
-            <Tag text="Kivy"></Tag>
-            <Tag text="Firebase"></Tag>
-          </p>
-          <IconLink
-            url="https://github.com/Cornell-Engineering-World-Health/womens-health-game"
-            text="GitHub"
-          />
-          <IconLink
-            url="https://play.google.com/store/apps/details?id=org.cornellewh.healthfriend"
-            text="Google Play Store"
-          />
-        </Col>
       </Row>
 
       <br />
@@ -117,9 +97,35 @@ const Projects = () => {
         </Col>
       </Row>
       <br />
-      <Row className="player-wrapper justify-content-center">
+      <Row className="justify-content-center">
         <Image src={quolesomeness} height="400px" />
       </Row>
+
+      <Row className="pt-4">
+        <Image src={women} roundedCircle height="100px" width="100px" />
+        <Col>
+          <p className="title">Health Friend</p>
+          <p className="letter">
+            A tablet game developed at{" "}
+            <Link
+              url="https://www.cornellewh.org/"
+              text="Cornell Engineering World Health"
+            ></Link>{" "}
+            to help women in low-resource areas in India to learn about their
+            own bodies and menstrual health, partnered with Barefoot College in
+            India.
+            <br />
+            <Tag text="Kivy"></Tag>
+            <Tag text="Firebase"></Tag>
+          </p>
+          <IconLink
+            url="https://github.com/Cornell-Engineering-World-Health/womens-health-game"
+            text="GitHub"
+          />
+        </Col>
+      </Row>
+
+      <br />
 
       <Row className="pt-4">
         <br />

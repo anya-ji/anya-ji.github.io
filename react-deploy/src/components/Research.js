@@ -47,7 +47,8 @@ const Research = () => {
             Anya Ji, Noriyuki Kojima, Noah Rush, Alane Suhr, Wai Keen Vong,
             Robert D. Hawkins, Yoav Artzi
             <br />
-            <Tag text="EMNLP 2022 Best Long Paper"></Tag>
+            <Tag text="EMNLP 2022"></Tag>
+            <Tag text="⭐ Best Long Paper"></Tag>
           </p>
 
           <IconLink
