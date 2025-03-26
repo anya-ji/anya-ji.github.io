@@ -6,6 +6,7 @@ import github from "./assets/github.png";
 import gmail from "./assets/gmail.png";
 import head from "./assets/head.jpg";
 import linkedin from "./assets/linkedin.png";
+import scholar from "./assets/scholar.png";
 
 import Content from "./components/Content.js";
 import Link from "./components/Link.js";
@@ -32,6 +33,14 @@ const App = () => {
         </Row>
 
         <Row className="centered-row">
+          <Link url="https://scholar.google.com/citations?user=UppptTkAAAAJ">
+            <Image
+              className="m-3 click"
+              src={scholar}
+              roundedCircle
+              height="50px"
+            />
+          </Link>
           <Link url="https://github.com/anya-ji">
             <Image
               className="m-3 click"
