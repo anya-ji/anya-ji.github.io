@@ -15,84 +15,97 @@ import MenuButton from "./components/MenuButton.js";
 const App = () => {
   const [content, setContent] = useState(0);
 
+  // Add 'projects-page' class when content === 2
+  const appClass = `App${content === 2 ? " projects-page" : ""}`;
+
   return (
-    <div className="App">
+    <div className={appClass}>
       <div className="left">
         <Row className="centered-col">
           <Image
-            className="m-3 click"
+            className="profile-image click"
             src={head}
             roundedCircle
-            height="200px"
-            width="200px"
+            height="220px"
+            width="220px"
             onClick={() => setContent(0)}
           />
         </Row>
-        <Row className="centered-row letter" style={{ textAlign: "center" }}>
-          <h1 style={{ textAlign: "left", fontWeight: "bold" }}>Anya Ji</h1>
+        <Row className="centered-row">
+          <h1 className="name">Anya Ji</h1>
         </Row>
 
         <Row className="centered-row">
-          <Link url="https://scholar.google.com/citations?user=UppptTkAAAAJ">
-            <Image
-              className="m-3 click"
-              src={scholar}
-              roundedCircle
-              height="50px"
-            />
-          </Link>
-          <Link url="https://github.com/anya-ji">
-            <Image
-              className="m-3 click"
-              src={github}
-              roundedCircle
-              height="50px"
-            />
-          </Link>
-          <Link url="https://www.linkedin.com/in/anya-ji/">
-            <Image
-              className="m-3 click"
-              src={linkedin}
-              roundedCircle
-              height="50px"
-            />
-          </Link>
-          <Link url="mailto:anyaj0109@gmail.com">
-            <Image
-              className="m-3 click"
-              src={gmail}
-              roundedCircle
-              height="50px"
-            />
-          </Link>
+          <div className="social-icons">
+            <Link url="https://scholar.google.com/citations?user=UppptTkAAAAJ">
+              <Image
+                className="social-icon click"
+                src={scholar}
+                roundedCircle
+                height="50px"
+                width="50px"
+              />
+            </Link>
+            <Link url="https://github.com/anya-ji">
+              <Image
+                className="social-icon click"
+                src={github}
+                roundedCircle
+                height="50px"
+                width="50px"
+              />
+            </Link>
+            <Link url="https://www.linkedin.com/in/anya-ji/">
+              <Image
+                className="social-icon click"
+                src={linkedin}
+                roundedCircle
+                height="50px"
+                width="50px"
+              />
+            </Link>
+            <Link url="mailto:anyaj0109@gmail.com">
+              <Image
+                className="social-icon click"
+                src={gmail}
+                roundedCircle
+                height="50px"
+                width="50px"
+              />
+            </Link>
+          </div>
         </Row>
 
-        <Row className="centered-col menu">
-          <MenuButton
-            onClick={() => setContent(0)}
-            text={"About"}
-            isActive={content === 0}
-          />
-          <MenuButton
-            onClick={() => setContent(1)}
-            text={"Research"}
-            isActive={content === 1}
-          />
-          <MenuButton
-            onClick={() => setContent(2)}
-            text={"Projects"}
-            isActive={content === 2}
-          />
-          <MenuButton
-            onClick={() => setContent(3)}
-            text={"*"}
-            isActive={content === 3}
-          />
+        <Row className="centered-col">
+          <div className="nav-menu">
+            <MenuButton
+              onClick={() => setContent(0)}
+              text={"about"}
+              isActive={content === 0}
+            />
+            <MenuButton
+              onClick={() => setContent(1)}
+              text={"research"}
+              isActive={content === 1}
+            />
+            <MenuButton
+              onClick={() => setContent(2)}
+              text={"projects"}
+              isActive={content === 2}
+            />
+            <MenuButton
+              onClick={() => setContent(3)}
+              text={"*"}
+              isActive={content === 3}
+            />
+          </div>
         </Row>
       </div>
 
       <div className="right">
-        <Content content={content} />
+        <div className="content-area">
+          <Content content={content} />
+        </div>
       </div>
     </div>
   );
