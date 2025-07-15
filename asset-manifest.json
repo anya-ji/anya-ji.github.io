@@ -1,22 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.a8566e43.css",
-    "main.js": "/static/js/main.f20d1c0d.js",
-    "static/media/quolesomeness.png": "/static/media/quolesomeness.deca2a427e3c09c6b8a1.png",
-    "static/media/prototype.jpg": "/static/media/prototype.be26a9183130aca4c0be.jpg",
+    "main.css": "/static/css/main.17535c69.css",
+    "main.js": "/static/js/main.3133c611.js",
+    "static/media/pancake_printer.jpg": "/static/media/pancake_printer.38de9457084013bb5337.jpg",
     "static/media/scholar.png": "/static/media/scholar.b7a828eab447820ba942.png",
     "static/media/women.png": "/static/media/women.4416687c1d8bdf1094e4.png",
-    "static/media/wholesome.png": "/static/media/wholesome.b3ae1ac80f8a540dca16.png",
     "static/media/refgame.png": "/static/media/refgame.748f37baf8c031755943.png",
     "static/media/triviac.jpg": "/static/media/triviac.d40efc1502a26a986af7.jpg",
     "static/media/head.jpg": "/static/media/head.5132e73c49057e7811ad.jpg",
     "static/media/gmail.png": "/static/media/gmail.43f938a985bbdf1bba64.png",
     "index.html": "/index.html",
-    "main.a8566e43.css.map": "/static/css/main.a8566e43.css.map",
-    "main.f20d1c0d.js.map": "/static/js/main.f20d1c0d.js.map"
+    "main.17535c69.css.map": "/static/css/main.17535c69.css.map",
+    "main.3133c611.js.map": "/static/js/main.3133c611.js.map"
   },
   "entrypoints": [
-    "static/css/main.a8566e43.css",
-    "static/js/main.f20d1c0d.js"
+    "static/css/main.17535c69.css",
+    "static/js/main.3133c611.js"
   ]
 }
