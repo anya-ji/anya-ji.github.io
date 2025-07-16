@@ -30,7 +30,7 @@ const Projects = () => {
           </p>
           <IconLink url="https://github.com/anya-ji/triviac" text="GitHub" />
         </Col>
-        <Col>
+        <Col className="d-none d-lg-block">
           <ReactPlayer
             className="react-player"
             url="video/triviac_demo.mov"
@@ -39,8 +39,43 @@ const Projects = () => {
             playing
             width="200px"
             height="auto"
+            playsinline
+            muted
+            config={{
+              file: {
+                attributes: {
+                  playsInline: true,
+                  "webkit-playsinline": true,
+                  preload: "metadata",
+                },
+              },
+            }}
           />
         </Col>
+      </Row>
+
+      {/* when screen is narrow */}
+      <Row className="mb-5 d-flex d-lg-none justify-content-center">
+        <ReactPlayer
+          className="react-player"
+          url="video/triviac_demo.mov"
+          controls={false}
+          loop
+          playing
+          width="200px"
+          height="auto"
+          playsinline
+          muted
+          config={{
+            file: {
+              attributes: {
+                playsInline: true,
+                "webkit-playsinline": true,
+                preload: "metadata",
+              },
+            },
+          }}
+        />
       </Row>
 
       <Row className="mb-5">
@@ -82,6 +117,17 @@ const Projects = () => {
           playing
           width="350px"
           height="auto"
+          playsinline
+          muted
+          config={{
+            file: {
+              attributes: {
+                playsInline: true,
+                "webkit-playsinline": true,
+                preload: "metadata",
+              },
+            },
+          }}
         />
       </Row>
 
