@@ -9,9 +9,9 @@ const About = () => {
         Hello! I'm a first-year PhD student in{" "}
         <Link url={"https://bair.berkeley.edu/"} text={"BAIR"} /> at UC Berkeley
         working with{" "}
-        <Link url={"https://www.alanesuhr.com/"} text={"Alane Suhr"} />. I'm
-        broadly interested in natural language processing,
-        cognitive science, multi-modal reasoning, and human-agent interaction.
+        <Link url={"https://www.alanesuhr.com/"} text={"Alane Suhr"} />. My
+        research interests include multi-modal reasoning, human-agent
+        interaction, and cognitive science.
       </p>
       <p>
         I graduated from Cornell University in 2023 with MEng and BA in Computer

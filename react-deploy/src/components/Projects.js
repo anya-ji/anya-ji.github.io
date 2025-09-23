@@ -11,13 +11,13 @@ import Tag from "./Tag.js";
 const Projects = () => {
   return (
     <div>
-      <Row className="mb-5">
+      <Row className="mb-4">
         <Image
           src={triviac}
           roundedCircle
-          height="120px"
-          width="120px"
-          className="me-4"
+          height="80px"
+          width="80px"
+          className="me-3"
         />
         <Col>
           <p className="project-title">Triviac - Trivia games</p>
@@ -37,7 +37,7 @@ const Projects = () => {
             controls={false}
             loop
             playing
-            width="200px"
+            width="150px"
             height="auto"
             playsinline
             muted
@@ -62,7 +62,7 @@ const Projects = () => {
           controls={false}
           loop
           playing
-          width="200px"
+          width="150px"
           height="auto"
           playsinline
           muted
@@ -78,13 +78,13 @@ const Projects = () => {
         />
       </Row>
 
-      <Row className="mb-5">
+      <Row className="mb-4">
         <Image
           src={printer}
           roundedCircle
-          height="120px"
-          width="120px"
-          className="me-4"
+          height="80px"
+          width="80px"
+          className="me-3"
         />
         <Col>
           <p className="project-title">Pancake Printer</p>
@@ -115,7 +115,7 @@ const Projects = () => {
           controls={false}
           loop
           playing
-          width="350px"
+          width="250px"
           height="auto"
           playsinline
           muted
@@ -131,13 +131,13 @@ const Projects = () => {
         />
       </Row>
 
-      <Row className="mb-5">
+      <Row className="mb-4">
         <Image
           src={women}
           roundedCircle
-          height="120px"
-          width="120px"
-          className="me-4"
+          height="80px"
+          width="80px"
+          className="me-3"
         />
         <Col>
           <p className="project-title">Health Friend</p>

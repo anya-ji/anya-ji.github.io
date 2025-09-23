@@ -26,8 +26,8 @@ const App = () => {
             className="profile-image click"
             src={head}
             roundedCircle
-            height="220px"
-            width="220px"
+            height="150px"
+            width="150px"
             onClick={() => setContent(0)}
           />
         </Row>
@@ -42,8 +42,8 @@ const App = () => {
                 className="social-icon click"
                 src={scholar}
                 roundedCircle
-                height="50px"
-                width="50px"
+                height="40px"
+                width="40px"
               />
             </Link>
             <Link url="https://github.com/anya-ji">
@@ -51,8 +51,8 @@ const App = () => {
                 className="social-icon click"
                 src={github}
                 roundedCircle
-                height="50px"
-                width="50px"
+                height="40px"
+                width="40px"
               />
             </Link>
             <Link url="https://www.linkedin.com/in/anya-ji/">
@@ -60,8 +60,8 @@ const App = () => {
                 className="social-icon click"
                 src={linkedin}
                 roundedCircle
-                height="50px"
-                width="50px"
+                height="40px"
+                width="40px"
               />
             </Link>
             <Link url="mailto:anyaj0109@gmail.com">
@@ -69,8 +69,8 @@ const App = () => {
                 className="social-icon click"
                 src={gmail}
                 roundedCircle
-                height="50px"
-                width="50px"
+                height="40px"
+                width="40px"
               />
             </Link>
           </div>

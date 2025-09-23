@@ -9,8 +9,8 @@ import Tag from "./Tag.js";
 const Research = () => {
   return (
     <div>
-      <Row className="mb-5">
-        <Image src={refgame} height="120px" width="120px" className="me-4" />
+      <Row className="mb-4">
+        <Image src={refgame} height="80px" width="80px" className="me-3" />
         <Col>
           <span className="research-title">
             <Link
@@ -27,8 +27,8 @@ const Research = () => {
         </Col>
       </Row>
 
-      <Row className="mb-5">
-        <Image src={tangram} height="120px" width="120px" className="me-4" />
+      <Row className="mb-4">
+        <Image src={tangram} height="80px" width="80px" className="me-3" />
         <Col>
           <span className="research-title">
             <Link
@@ -45,7 +45,7 @@ const Research = () => {
             <Tag text="⭐ Best Long Paper"></Tag>
           </p>
 
-          <div className="mt-3">
+          <div className="mt-2">
             <IconLink
               url="https://lil.nlp.cornell.edu/kilogram/dashboard/"
               text="Dataset"
