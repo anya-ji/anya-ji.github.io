@@ -1,20 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.1b36183a.css",
-    "main.js": "/static/js/main.77568056.js",
+    "main.css": "/static/css/main.3c9c338b.css",
+    "main.js": "/static/js/main.16074ea5.js",
     "static/media/pancake_printer.jpg": "/static/media/pancake_printer.38de9457084013bb5337.jpg",
-    "static/media/scholar.png": "/static/media/scholar.b7a828eab447820ba942.png",
     "static/media/women.png": "/static/media/women.4416687c1d8bdf1094e4.png",
     "static/media/refgame.png": "/static/media/refgame.748f37baf8c031755943.png",
     "static/media/triviac.jpg": "/static/media/triviac.d40efc1502a26a986af7.jpg",
     "static/media/head.jpg": "/static/media/head.5132e73c49057e7811ad.jpg",
-    "static/media/gmail.png": "/static/media/gmail.43f938a985bbdf1bba64.png",
+    "static/media/scholar.png": "/static/media/scholar.fc4ff3c849799122f43e.png",
     "index.html": "/index.html",
-    "main.1b36183a.css.map": "/static/css/main.1b36183a.css.map",
-    "main.77568056.js.map": "/static/js/main.77568056.js.map"
+    "main.3c9c338b.css.map": "/static/css/main.3c9c338b.css.map",
+    "main.16074ea5.js.map": "/static/js/main.16074ea5.js.map"
   },
   "entrypoints": [
-    "static/css/main.1b36183a.css",
-    "static/js/main.77568056.js"
+    "static/css/main.3c9c338b.css",
+    "static/js/main.16074ea5.js"
   ]
 }
