@@ -159,8 +159,55 @@ body {
   color: #333333;
   font-size: 28px;
   font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  position: relative;
+  cursor: help;
+}
+
+/* Tooltip styling */
+.name-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333333;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 400;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1000;
+  margin-bottom: 0.5rem;
+}
+
+.name-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333333;
+}
+
+.name:hover .name-tooltip {
+  opacity: 0.5;
+  visibility: visible;
+}
+
+/* Email styling */
+.email {
+  color: #666666;
+  font-size: 14px;
+  font-weight: 500;
   margin-bottom: 1.5rem;
   text-align: center;
+  letter-spacing: 0.5px;
 }
 
 /* Social icons styling */
@@ -171,8 +218,8 @@ body {
 }
 
 .social-icon {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   transition: all 0.2s ease;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);

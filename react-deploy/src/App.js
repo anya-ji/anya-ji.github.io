@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Image, Row } from "react-bootstrap";
 import "./App.css";
 import github from "./assets/github.png";
-import gmail from "./assets/gmail.png";
 import head from "./assets/head.jpg";
 import linkedin from "./assets/linkedin.png";
 import scholar from "./assets/scholar.png";
@@ -32,18 +31,35 @@ const App = () => {
           />
         </Row>
         <Row className="centered-row">
-          <h1 className="name">Anya Ji</h1>
+          <h1 className="name">
+            Anya Ji
+            <span className="name-tooltip">
+              AN-yuh, maybe AHN-yuh when ordering at a cafe
+            </span>
+          </h1>
+        </Row>
+        <Row className="centered-row">
+          <p className="email">anyaji@berkeley.edu</p>
         </Row>
 
         <Row className="centered-row">
           <div className="social-icons">
+            <Link url="https://www.linkedin.com/in/anya-ji/">
+              <Image
+                className="social-icon click"
+                src={linkedin}
+                roundedCircle
+                height="30px"
+                width="30px"
+              />
+            </Link>
             <Link url="https://scholar.google.com/citations?user=UppptTkAAAAJ">
               <Image
                 className="social-icon click"
                 src={scholar}
                 roundedCircle
-                height="40px"
-                width="40px"
+                height="30px"
+                width="30px"
               />
             </Link>
             <Link url="https://github.com/anya-ji">
@@ -51,26 +67,8 @@ const App = () => {
                 className="social-icon click"
                 src={github}
                 roundedCircle
-                height="40px"
-                width="40px"
-              />
-            </Link>
-            <Link url="https://www.linkedin.com/in/anya-ji/">
-              <Image
-                className="social-icon click"
-                src={linkedin}
-                roundedCircle
-                height="40px"
-                width="40px"
-              />
-            </Link>
-            <Link url="mailto:anyaj0109@gmail.com">
-              <Image
-                className="social-icon click"
-                src={gmail}
-                roundedCircle
-                height="40px"
-                width="40px"
+                height="30px"
+                width="30px"
               />
             </Link>
           </div>
