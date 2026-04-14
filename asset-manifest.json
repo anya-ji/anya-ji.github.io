@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.3c9c338b.css",
-    "main.js": "/static/js/main.16074ea5.js",
+    "main.css": "/static/css/main.e3399255.css",
+    "main.js": "/static/js/main.f7119765.js",
     "static/media/pancake_printer.jpg": "/static/media/pancake_printer.38de9457084013bb5337.jpg",
     "static/media/women.png": "/static/media/women.4416687c1d8bdf1094e4.png",
     "static/media/refgame.png": "/static/media/refgame.748f37baf8c031755943.png",
@@ -9,11 +9,11 @@
     "static/media/head.jpg": "/static/media/head.5132e73c49057e7811ad.jpg",
     "static/media/scholar.png": "/static/media/scholar.fc4ff3c849799122f43e.png",
     "index.html": "/index.html",
-    "main.3c9c338b.css.map": "/static/css/main.3c9c338b.css.map",
-    "main.16074ea5.js.map": "/static/js/main.16074ea5.js.map"
+    "main.e3399255.css.map": "/static/css/main.e3399255.css.map",
+    "main.f7119765.js.map": "/static/js/main.f7119765.js.map"
   },
   "entrypoints": [
-    "static/css/main.3c9c338b.css",
-    "static/js/main.16074ea5.js"
+    "static/css/main.e3399255.css",
+    "static/js/main.f7119765.js"
   ]
 }
