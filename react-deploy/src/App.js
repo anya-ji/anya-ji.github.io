@@ -34,7 +34,7 @@ const App = () => {
           <h1 className="name">
             Anya Ji
             <span className="name-tooltip">
-              AN-yuh, maybe AHN-yuh when ordering at a cafe
+              AN-yuh, sometimes AHN-yuh so it doesn't get spelled with an "E"
             </span>
           </h1>
         </Row>
@@ -101,7 +101,7 @@ const App = () => {
       </div>
 
       <div className="right">
-        <div className="content-area">
+        <div key={content} className="content-area">
           <Content content={content} />
         </div>
       </div>

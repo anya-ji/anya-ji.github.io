@@ -9,12 +9,7 @@ const Others = () => {
         I do ballet growing up, and I'm recently learning figure skating! I
         learned to juggle a bit (balls and{" "}
         <Link url="https://en.wikipedia.org/wiki/Diabolo" text="diabolo"></Link>
-        ) at Cornell (
-        <Link
-          url="https://scl.cornell.edu/coe/pe-courses/fall-pe-courses/circus/juggling"
-          text="fun class!"
-        ></Link>
-        ). I post good food and some questionable cooking on my{" "}
+        ) at Cornell. I post good food and some questionable cooking on my{" "}
         <Link
           url="https://www.instagram.com/onion_eats/"
           text="food blog"
@@ -22,10 +17,9 @@ const Others = () => {
         .
       </p>
       <p>
-        I also speak Mandarin, learned German throughout my middle and high
-        school years, and took American Sign Language in college. I
-        learned a bit of Danish during study abroad in Copenhagen, and I've
-        always been learning Japanese on and off (sorry Duo).
+        I also speak Mandarin, some German, and took American Sign Language in
+        college. I picked up a little Danish during study abroad in Copenhagen,
+        and have been learning Japanese.
       </p>
     </div>
   );

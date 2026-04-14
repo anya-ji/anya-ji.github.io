@@ -12,8 +12,7 @@ const About = () => {
         <Link url={"https://www.alanesuhr.com/"} text={"Alane Suhr"} />. My
         research interests include multi-modal reasoning, human-agent
         interaction, and cognitive science. I'm recently interested in
-        controllable and interactive vision language reasoning and LLM agent
-        behaviors in the wild.
+        controllable and interactive vision language reasoning.
       </p>
       <p>
         I graduated from Cornell University in 2023 with M.Eng. and B.A. in
