@@ -1,8 +1,9 @@
 import React from "react";
 import "../App.css";
 
-const Tag = ({ text }) => {
-  return <span className="tag">{text}</span>;
+// A white chip with a light blue border; `award` swaps it to light yellow.
+const Tag = ({ text, award }) => {
+  return <span className={`tag${award ? " tag-award" : ""}`}>{text}</span>;
 };
 
 export default Tag;

@@ -9,7 +9,7 @@
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
   line-height: 1.6;
-  max-width: 1000px;
+  max-width: 1120px;
   margin: 0 auto;
   box-sizing: border-box;
 }
@@ -36,7 +36,7 @@
 }
 
 .right {
-  width: 600px;
+  width: 720px;
   min-width: 350px;
   min-height: 100vh;
   display: flex;
@@ -48,17 +48,28 @@
   overflow-y: visible;
 }
 
-/* Make .right scrollable if content is taller than viewport */
-.projects-page .right {
+/* Make .right scrollable if content is taller than viewport.
+   justify-content must stay flex-start: centering a flex container's
+   overflow clips the top of the content and makes it unreachable. The
+   auto margins below re-center the block while it still fits, so it sits
+   centered when collapsed and grows downward once it doesn't. */
+.scroll-page .right {
   justify-content: flex-start;
   align-items: flex-start;
   overflow-y: auto;
   min-height: 100vh;
   max-height: 100vh;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.scroll-page .content-area {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 @media only screen and (max-width: 900px) {
-  .projects-page .right {
+  .scroll-page .right {
     overflow-y: visible;
   }
 
@@ -152,6 +163,143 @@ body {
   margin-bottom: 1.5rem;
   border: 2px solid #f0f0f0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Sparkle burst on click */
+.sparkle-wrapper {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+  cursor: pointer;
+}
+
+/* App.js sets --wand-cursor to a sprite (with its own `, pointer` fallback);
+   until it does, these fall back to a plain pointer. */
+.sparkle-wrapper:active {
+  cursor: var(--wand-cursor, pointer);
+}
+
+/* Once the portrait has been clicked the wand sticks, everywhere, and a fresh
+   sprite is drawn on each click. The descendant selector is needed to beat the
+   cursor rules on links, buttons and text that would otherwise take over. */
+body.wand-cursor,
+body.wand-cursor * {
+  cursor: var(--wand-cursor, pointer);
+}
+
+/* The portrait sits above the sparkle layer, so sparkles emerge from behind it. */
+.sparkle-wrapper .profile-image {
+  position: relative;
+  z-index: 1;
+}
+
+/* Sparkles fly out from the center of the wrapped element. */
+.sparkle-layer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Radial burst outward. X and Y share one easing so the ejection stays straight. */
+.sparkle-x {
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation-name: sparkle-x;
+  animation-timing-function: cubic-bezier(0.16, 0.62, 0.36, 1);
+  animation-fill-mode: forwards;
+  will-change: transform;
+}
+
+.sparkle-y {
+  display: block;
+  animation-name: sparkle-y;
+  animation-timing-function: cubic-bezier(0.16, 0.62, 0.36, 1);
+  animation-fill-mode: forwards;
+  will-change: transform;
+}
+
+/* Gravity as its own accelerating layer: it blends into the radial motion
+   instead of scripting an apex, so nothing pauses before the drop. */
+.sparkle-g {
+  display: block;
+  animation-name: sparkle-gravity;
+  animation-timing-function: cubic-bezier(0.5, 0, 0.9, 0.85);
+  animation-fill-mode: forwards;
+  will-change: transform;
+}
+
+.sparkle {
+  display: block;
+  transform: translate(-50%, -50%) scale(0);
+  animation-name: sparkle-pop;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  filter: drop-shadow(0 0 3px var(--glow)) drop-shadow(0 0 7px var(--glow));
+  will-change: transform, opacity;
+}
+
+@keyframes sparkle-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(var(--dx));
+  }
+}
+
+@keyframes sparkle-y {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(var(--dy));
+  }
+}
+
+@keyframes sparkle-gravity {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(var(--fall));
+  }
+}
+
+@keyframes sparkle-pop {
+  0% {
+    transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
+    opacity: 0;
+  }
+  18% {
+    transform: translate(-50%, -50%) scale(1.15)
+               rotate(calc(var(--rot) * 0.18));
+    opacity: 1;
+  }
+  35% {
+    transform: translate(-50%, -50%) scale(0.9)
+               rotate(calc(var(--rot) * 0.35));
+    opacity: 1;
+  }
+  60% {
+    transform: translate(-50%, -50%) scale(1.05)
+               rotate(calc(var(--rot) * 0.6));
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.25) rotate(var(--rot));
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sparkle-layer {
+    display: none;
+  }
 }
 
 /* Name styling */
@@ -276,6 +424,30 @@ body {
   animation: fadeIn 0.3s ease;
 }
 
+/* Keep the card's inner gap even on all four sides. Bootstrap 4 rows carry
+   -15px side margins that eat into the card padding, and the trailing row's
+   mb-4 doubles the gap at the bottom. */
+.content-area .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.content-area .row:last-child,
+.content-area > * > *:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Space the rows in an expanded project from the top instead of the bottom,
+   so no trailing margin escapes the panel. A row hidden at this breakpoint
+   contributes nothing, which a bottom margin on its sibling could not avoid. */
+.project-panel .row {
+  margin-bottom: 0 !important;
+}
+
+.project-panel .row + .row {
+  margin-top: 1rem;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -299,47 +471,109 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Tag styling */
+/* Title, description, chips and links are siblings inside the entry column,
+   so one rule gives every gap between them the same size. */
+.content-area .col > * {
+  margin-bottom: 0;
+}
+
+.content-area .col > * + * {
+  margin-top: 0.5rem;
+}
+
+/* Chips and links space themselves, so the rhythm above stays the only
+   source of vertical gaps. */
+.tags,
+.resource-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.resource-links {
+  gap: 0.9rem;
+}
+
+/* Tag chips: white with a light blue border */
 .tag {
   display: inline-block;
-  padding: 0.2rem 0.5rem;
-  margin: 0.2rem 0.4rem 0.2rem 0;
-  border-radius: 16px;
-  font-size: 0.75rem;
+  padding: 0.1rem 0.8rem;
+  margin: 0;
+  border-radius: 20px;
+  font-size: 0.85rem;
   font-weight: 500;
-  line-height: 1.2;
-  background-color: #000;
-  color: #fff;
-}
-
-/* Icon link styling */
-.icon-link {
-  color: #666666;
-  margin: 0 0.4rem 0.4rem 0;
-  font-size: 14px;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  padding: 0.2rem 0.8rem;
-  border-radius: 6px;
-  transition: all 0.2s ease;
-  font-weight: 500;
-  background-color: #f8f9fa;
-  border: 1px solid #e9ecef;
-}
-
-.icon-link:hover {
-  background-color: #e9ecef;
+  line-height: 1.3;
+  background-color: #ffffff;
   color: #333333;
-  text-decoration: none;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #a8dcf2;
 }
 
-.icon-link svg {
-  margin-right: 0.15rem;
-  width: 16px;
-  height: 16px;
+/* Awards get a light yellow border instead */
+.tag-award {
+  border-color: #f3d780;
+}
+
+/* Outbound resource links are plain underlined text */
+.resource-link {
+  display: inline;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000;
+  text-decoration: underline;
+  transition: opacity 0.2s ease;
+}
+
+.resource-link:hover {
+  color: #000000;
+  text-decoration: underline;
+  opacity: 0.6;
+}
+
+/* Expandable project entries in the "*" tab */
+.project-toggle {
+  display: inline-block;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  color: #63c2e8;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.project-toggle:hover,
+.project-toggle.open {
+  color: #63c2e8;
+  text-decoration: underline;
+}
+
+.project-toggle:focus-visible {
+  outline: 2px solid #63c2e8;
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* Caret rotates to point down while the panel is open */
+.project-caret {
+  display: inline-block;
+  margin-left: 0.3rem;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid currentColor;
+  transform: rotate(-90deg);
+  transition: transform 0.2s ease;
+  vertical-align: middle;
+}
+
+.project-toggle.open .project-caret {
+  transform: rotate(0deg);
+}
+
+.project-panel {
+  margin-top: 1.25rem;
+  padding: 1rem 0 0 0;
+  border-top: 1px solid #ececec;
+  animation: fadeIn 0.25s ease;
 }
 
 .underline-button {

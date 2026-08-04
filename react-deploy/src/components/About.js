@@ -8,7 +8,7 @@ const About = () => {
       <p>
         Hello! I'm a Computer Science Ph.D. student in{" "}
         <Link url={"https://bair.berkeley.edu/"} text={"BAIR"} /> at UC Berkeley
-        working with{" "}
+        advised by{" "}
         <Link url={"https://www.alanesuhr.com/"} text={"Alane Suhr"} />. My
         research interests include multi-modal reasoning, human-agent
         interaction, and cognitive science. I'm recently interested in
