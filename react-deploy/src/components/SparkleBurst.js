@@ -25,14 +25,15 @@ const SparkleIcon = ({ core, glow }) => (
   </svg>
 );
 
-const makeSparkles = () => {
+// `spread` scales how far the sparkles travel. The portrait burst has to clear
+// a 150px circle to be seen at all; a burst in open space does not.
+const makeSparkles = (spread = 1) => {
   const id = Date.now() + Math.random();
   // Spread the sparkles evenly around the circle, then jitter so bursts differ.
   return Array.from({ length: SPARKLE_COUNT }, (_, i) => {
     const angle =
       (i / SPARKLE_COUNT) * 2 * Math.PI + (Math.random() - 0.5) * 0.5;
-    // Must clear the 150px portrait (radius 75) to be seen coming from behind it.
-    const distance = 120 + Math.random() * 80;
+    const distance = (120 + Math.random() * 80) * spread;
     const color = COLORS[Math.floor(Math.random() * COLORS.length)];
     return {
       key: `${id}-${i}`,
@@ -50,22 +51,111 @@ const makeSparkles = () => {
   });
 };
 
-// Renders bursts of sparkles that clean themselves up once the animation ends.
-const SparkleBurst = ({ children, className = "", onClick }) => {
+// Nested spans compose the motion: radial X, radial Y, gravity, and spin/fade.
+// Keeping gravity on its own layer avoids a scripted apex, so the arc stays
+// smooth instead of stalling before the drop.
+const Sprites = ({ sparkles }) =>
+  sparkles.map((s) => (
+    <span
+      key={s.key}
+      className="sparkle-x"
+      style={{
+        "--dx": `${s.dx}px`,
+        animationDuration: `${s.duration}ms`,
+        animationDelay: `${s.delay}ms`,
+      }}
+    >
+      <span
+        className="sparkle-y"
+        style={{
+          "--dy": `${s.dy}px`,
+          animationDuration: `${s.duration}ms`,
+          animationDelay: `${s.delay}ms`,
+        }}
+      >
+        <span
+          className="sparkle-g"
+          style={{
+            "--fall": `${s.fall}px`,
+            animationDuration: `${s.duration}ms`,
+            animationDelay: `${s.delay}ms`,
+          }}
+        >
+          <span
+            className="sparkle"
+            style={{
+              "--rot": `${s.rotation}deg`,
+              "--glow": s.color.glow,
+              width: `${s.size}px`,
+              height: `${s.size}px`,
+              animationDuration: `${s.duration}ms`,
+              animationDelay: `${s.delay}ms`,
+            }}
+          >
+            <SparkleIcon core={s.color.core} glow={s.color.glow} />
+          </span>
+        </span>
+      </span>
+    </span>
+  ));
+
+// Holds the in-flight bursts and retires each one when its animation ends.
+export const useSparkleBursts = (spread) => {
   const [bursts, setBursts] = React.useState([]);
   const timeouts = React.useRef([]);
 
   React.useEffect(() => () => timeouts.current.forEach(clearTimeout), []);
 
+  const add = React.useCallback(
+    (at) => {
+      const burst = { id: Date.now() + Math.random(), sparkles: makeSparkles(spread), ...at };
+      setBursts((prev) => [...prev, burst]);
+      timeouts.current.push(
+        setTimeout(
+          () => setBursts((prev) => prev.filter((b) => b.id !== burst.id)),
+          SPARKLE_LIFETIME + 300
+        )
+      );
+    },
+    [spread]
+  );
+
+  return [bursts, add];
+};
+
+// Each burst needs its own keyed node. Returning a bare nested array would make
+// React reconcile bursts by position, so retiring one burst would remount (and
+// restart) every burst still in flight.
+const Bursts = ({ bursts, positioned }) =>
+  bursts.map((burst) =>
+    positioned ? (
+      <span
+        key={burst.id}
+        className="sparkle-origin"
+        style={{ left: burst.x, top: burst.y }}
+      >
+        <Sprites sparkles={burst.sparkles} />
+      </span>
+    ) : (
+      <React.Fragment key={burst.id}>
+        <Sprites sparkles={burst.sparkles} />
+      </React.Fragment>
+    )
+  );
+
+// Full-viewport layer for bursts fired at arbitrary click coordinates.
+export const SparkleOverlay = ({ bursts }) => (
+  <span className="sparkle-overlay" aria-hidden="true">
+    <Bursts bursts={bursts} positioned />
+  </span>
+);
+
+// Bursts from the centre of whatever it wraps, from behind it.
+const SparkleBurst = ({ children, className = "", onClick }) => {
+  const [bursts, add] = useSparkleBursts();
+
   const handleClick = (e) => {
-    const burst = { id: Date.now() + Math.random(), sparkles: makeSparkles() };
-    setBursts((prev) => [...prev, burst]);
-    timeouts.current.push(
-      setTimeout(
-        () => setBursts((prev) => prev.filter((b) => b.id !== burst.id)),
-        SPARKLE_LIFETIME + 300
-      )
-    );
+    add();
     if (onClick) onClick(e);
   };
 
@@ -73,60 +163,7 @@ const SparkleBurst = ({ children, className = "", onClick }) => {
     <span className={`sparkle-wrapper ${className}`} onClick={handleClick}>
       {children}
       <span className="sparkle-layer">
-        {/* Each burst needs its own keyed node. Returning a bare nested array
-            here would make React reconcile bursts by position, so retiring one
-            burst would remount (and restart) every burst still in flight. */}
-        {bursts.map((burst) => (
-          <React.Fragment key={burst.id}>
-            {burst.sparkles.map((s) => (
-              // Nested spans compose the motion: radial X, radial Y, gravity,
-              // and spin/fade. Keeping gravity on its own layer avoids a
-              // scripted apex, so the arc stays smooth instead of stalling
-              // before the drop.
-              <span
-                key={s.key}
-                className="sparkle-x"
-                style={{
-                  "--dx": `${s.dx}px`,
-                  animationDuration: `${s.duration}ms`,
-                  animationDelay: `${s.delay}ms`,
-                }}
-              >
-                <span
-                  className="sparkle-y"
-                  style={{
-                    "--dy": `${s.dy}px`,
-                    animationDuration: `${s.duration}ms`,
-                    animationDelay: `${s.delay}ms`,
-                  }}
-                >
-                  <span
-                    className="sparkle-g"
-                    style={{
-                      "--fall": `${s.fall}px`,
-                      animationDuration: `${s.duration}ms`,
-                      animationDelay: `${s.delay}ms`,
-                    }}
-                  >
-                    <span
-                      className="sparkle"
-                      style={{
-                        "--rot": `${s.rotation}deg`,
-                        "--glow": s.color.glow,
-                        width: `${s.size}px`,
-                        height: `${s.size}px`,
-                        animationDuration: `${s.duration}ms`,
-                        animationDelay: `${s.delay}ms`,
-                      }}
-                    >
-                      <SparkleIcon core={s.color.core} glow={s.color.glow} />
-                    </span>
-                  </span>
-                </span>
-              </span>
-            ))}
-          </React.Fragment>
-        ))}
+        <Bursts bursts={bursts} />
       </span>
     </span>
   );

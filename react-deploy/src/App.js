@@ -10,7 +10,10 @@ import scholar from "./assets/scholar.png";
 import Content from "./components/Content.js";
 import Link from "./components/Link.js";
 import MenuButton from "./components/MenuButton.js";
-import SparkleBurst from "./components/SparkleBurst.js";
+import SparkleBurst, {
+  SparkleOverlay,
+  useSparkleBursts,
+} from "./components/SparkleBurst.js";
 
 const SOCIALS = [
   { url: "https://www.linkedin.com/in/anya-ji/", icon: linkedin },
@@ -42,29 +45,40 @@ const pickWand = (current) => {
 
 const App = () => {
   const [content, setContent] = useState(0);
-  // A wand is ready from the start so pressing the portrait shows one; it only
-  // sticks page-wide once the portrait has actually been clicked.
-  const [wand, setWand] = useState(() => pickWand(null));
-  const [wandSticks, setWandSticks] = useState(false);
-
-  useEffect(() => {
-    document.body.style.setProperty(
-      "--wand-cursor",
-      `url("${wand}") ${WAND_HOTSPOT}, pointer`
-    );
-  }, [wand]);
+  // Stays null until the portrait is clicked, so no wand is staged early and
+  // flashed before the one the click actually picks.
+  const [wand, setWand] = useState(null);
 
   // Set on <body> rather than the app root so the wand also covers the
   // margins outside the centered layout.
   useEffect(() => {
-    document.body.classList.toggle("wand-cursor", wandSticks);
-  }, [wandSticks]);
+    if (!wand) return;
+    document.body.style.setProperty(
+      "--wand-cursor",
+      `url("${wand}") ${WAND_HOTSPOT}, pointer`
+    );
+    document.body.classList.add("wand-cursor");
+  }, [wand]);
 
   const onProfileClick = () => {
     setContent(0);
-    setWandSticks(true);
     setWand(pickWand);
   };
+
+  // Clicking the empty space around the layout — anything that is not the white
+  // content card or the left column — sparkles at the pointer and rerolls the
+  // wand. Bound to the document so the margins outside .App count too.
+  const [bgBursts, addBgBurst] = useSparkleBursts(0.7);
+
+  useEffect(() => {
+    const onDocumentClick = (e) => {
+      if (e.target.closest?.(".content-area, .left")) return;
+      addBgBurst({ x: e.clientX, y: e.clientY });
+      setWand(pickWand);
+    };
+    document.addEventListener("click", onDocumentClick);
+    return () => document.removeEventListener("click", onDocumentClick);
+  }, [addBgBurst]);
 
   // The "*" tab can grow tall once projects are expanded, so let it scroll.
   const appClass = `App${content === 3 ? " scroll-page" : ""}`;
@@ -130,6 +144,8 @@ const App = () => {
           <Content content={content} />
         </div>
       </div>
+
+      <SparkleOverlay bursts={bgBursts} />
     </div>
   );
 };

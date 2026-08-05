@@ -173,18 +173,13 @@ body {
   cursor: pointer;
 }
 
-/* App.js sets --wand-cursor to a sprite (with its own `, pointer` fallback);
-   until it does, these fall back to a plain pointer. */
-.sparkle-wrapper:active {
-  cursor: var(--wand-cursor, pointer);
-}
-
-/* Once the portrait has been clicked the wand sticks, everywhere, and a fresh
-   sprite is drawn on each click. The descendant selector is needed to beat the
-   cursor rules on links, buttons and text that would otherwise take over. */
+/* Once the portrait has been clicked the wand sticks, everywhere, and App.js
+   draws a fresh sprite on each click. !important is required, not lazy:
+   Bootstrap's `[type="button"]:not(:disabled)` scores (0,2,0) and would beat
+   this selector's (0,1,1), putting the hand cursor back on every button. */
 body.wand-cursor,
 body.wand-cursor * {
-  cursor: var(--wand-cursor, pointer);
+  cursor: var(--wand-cursor, pointer) !important;
 }
 
 /* The portrait sits above the sparkle layer, so sparkles emerge from behind it. */
@@ -202,6 +197,25 @@ body.wand-cursor * {
   height: 0;
   pointer-events: none;
   z-index: 0;
+}
+
+/* Viewport-wide layer for bursts fired at a click position. Sits above the
+   page so background sparkles can arc over the content card. */
+.sparkle-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 50;
+}
+
+/* A zero-size point the sparkles radiate from, placed at the click. */
+.sparkle-origin {
+  position: absolute;
+  width: 0;
+  height: 0;
 }
 
 /* Radial burst outward. X and Y share one easing so the ejection stays straight. */
@@ -589,21 +603,6 @@ a:hover {
   transition: color 0.3s ease;
   font-family: inherit;
   font-weight: 500;
-}
-
-.underline-button::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 3px;
-  background-color: #666666;
-  transition: width 0.3s ease;
-}
-
-.underline-button:hover::after {
-  width: 100%;
 }
 
 .underline-button:hover,
