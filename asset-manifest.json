@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.b496250b.css",
-    "main.js": "/static/js/main.2960ab20.js",
+    "main.js": "/static/js/main.337e7fde.js",
     "static/media/pancake_printer.jpg": "/static/media/pancake_printer.38de9457084013bb5337.jpg",
     "static/media/women.png": "/static/media/women.4416687c1d8bdf1094e4.png",
     "static/media/a2c.gif": "/static/media/a2c.e5342e9852c029485659.gif",
@@ -12,10 +12,10 @@
     "static/media/scholar.png": "/static/media/scholar.fc4ff3c849799122f43e.png",
     "index.html": "/index.html",
     "main.b496250b.css.map": "/static/css/main.b496250b.css.map",
-    "main.2960ab20.js.map": "/static/js/main.2960ab20.js.map"
+    "main.337e7fde.js.map": "/static/js/main.337e7fde.js.map"
   },
   "entrypoints": [
     "static/css/main.b496250b.css",
-    "static/js/main.2960ab20.js"
+    "static/js/main.337e7fde.js"
   ]
 }
