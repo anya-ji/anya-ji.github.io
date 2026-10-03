@@ -33,7 +33,7 @@ const wandContext = require.context("./cursors/wands", false, /wand-\d+\.png$/);
 const WANDS = wandContext.keys().sort().map(wandContext);
 
 // The sprites are mirrored to point up and to the left, like a normal cursor.
-// Measured across all 64, the tip lands within a few pixels of here, so one
+// Measured across all of them, the tip lands within a few pixels of here, so one
 // hotspot serves them all.
 const WAND_HOTSPOT = "5 3";
 

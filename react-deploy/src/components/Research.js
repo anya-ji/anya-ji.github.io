@@ -3,7 +3,7 @@ import { Col, Image, Row } from "react-bootstrap";
 import tangram from "../assets/tangram.png";
 import refgame from "../assets/refgame.png";
 import adhoc from "../assets/adhoc.png";
-import a2c from "../assets/a2c.gif"
+import a2c from "../assets/a2c.gif";
 import ResourceLink from "./ResourceLink.js";
 import Link from "./Link.js";
 import Tag from "./Tag.js";
@@ -24,7 +24,8 @@ const Research = () => {
           </span>
 
           <p className="letter">
-            Anya Ji, Abhijith Varma Mudunuri, David M. Chan, Alane Suhr
+            <strong>Anya Ji</strong>, Abhijith Varma Mudunuri, David M. Chan,
+            Alane Suhr
           </p>
 
           <div className="tags">
@@ -51,8 +52,8 @@ const Research = () => {
           </span>
 
           <p className="letter">
-            Anya Ji, Claire Augusta Bergey, Ron Eliav, Yoav Artzi, Robert D.
-            Hawkins
+            <strong>Anya Ji</strong>, Claire Augusta Bergey, Ron Eliav, Yoav
+            Artzi, Robert D. Hawkins
           </p>
 
           <div className="tags">
@@ -72,7 +73,7 @@ const Research = () => {
           </span>
 
           <p className="letter">
-            Ron Eliav, Anya Ji, Yoav Artzi, Robert D. Hawkins
+            Ron Eliav, <strong>Anya Ji</strong>, Yoav Artzi, Robert D. Hawkins
           </p>
 
           <div className="tags">
@@ -92,8 +93,8 @@ const Research = () => {
           </span>
 
           <p className="letter">
-            Anya Ji, Noriyuki Kojima, Noah Rush, Alane Suhr, Wai Keen Vong,
-            Robert D. Hawkins, Yoav Artzi
+            <strong>Anya Ji</strong>, Noriyuki Kojima, Noah Rush, Alane Suhr,
+            Wai Keen Vong, Robert D. Hawkins, Yoav Artzi
           </p>
 
           <div className="tags">
