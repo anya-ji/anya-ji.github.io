@@ -10,6 +10,7 @@ import scholar from "./assets/scholar.png";
 import Content from "./components/Content.js";
 import Link from "./components/Link.js";
 import MenuButton from "./components/MenuButton.js";
+import Updates from "./components/Updates.js";
 import SparkleBurst, {
   SparkleOverlay,
   useSparkleBursts,
@@ -72,7 +73,7 @@ const App = () => {
 
   useEffect(() => {
     const onDocumentClick = (e) => {
-      if (e.target.closest?.(".content-area, .left")) return;
+      if (e.target.closest?.(".content-area, .updates-card, .left")) return;
       addBgBurst({ x: e.clientX, y: e.clientY });
       setWand(pickWand);
     };
@@ -140,8 +141,13 @@ const App = () => {
       </div>
 
       <div className="right">
-        <div key={content} className="content-area">
-          <Content content={content} />
+        {/* Only the white card takes part in centering; the updates card
+            hangs below it. The key remounts both on every tab switch. */}
+        <div key={content} className="content-anchor">
+          <div className="content-area">
+            <Content content={content} />
+          </div>
+          {content === 0 && <Updates />}
         </div>
       </div>
 

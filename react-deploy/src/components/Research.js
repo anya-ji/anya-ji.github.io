@@ -11,6 +11,8 @@ import Tag from "./Tag.js";
 const Research = () => {
   return (
     <div>
+      <div className="section-label">selected works</div>
+
       <Row className="mb-4">
         <Image src={a2c} height="80px" width="80px" className="me-3" />
         <Col>
@@ -26,7 +28,7 @@ const Research = () => {
           </p>
 
           <div className="tags">
-            <Tag text="ArXiv preprint"></Tag>
+            <Tag text="NeurIPS 2026"></Tag>
           </div>
 
           <div className="resource-links">

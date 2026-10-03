@@ -10,9 +10,9 @@ const About = () => {
         <Link url={"https://bair.berkeley.edu/"} text={"BAIR"} /> at UC Berkeley
         advised by{" "}
         <Link url={"https://www.alanesuhr.com/"} text={"Alane Suhr"} />. My
-        research interests span multi-modal reasoning, human-agent interaction,
-        and cognitive science. I'm recently interested in controllable and
-        interactive vision language reasoning.
+        research focuses on improving how models interact and collaborate with
+        humans. I work on vision-language reasoning, human-AI alignment, and learning
+        from interactions.
       </p>
       <p>
         I graduated from Cornell University in 2023 with M.Eng. and B.A. in

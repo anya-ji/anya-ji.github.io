@@ -63,9 +63,14 @@
   padding-bottom: 1.5rem;
 }
 
-.scroll-page .content-area {
+.scroll-page .content-anchor {
   margin-top: auto;
   margin-bottom: auto;
+}
+
+.scroll-page .content-area {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 @media only screen and (max-width: 900px) {
@@ -77,6 +82,11 @@
     max-height: none;
     padding-top: 0;
     padding-bottom: 0;
+  }
+
+  .scroll-page .content-anchor {
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
   .scroll-page .content-area {
@@ -453,6 +463,82 @@ body.wand-cursor * {
   animation: fadeIn 0.3s ease;
 }
 
+.content-anchor {
+  position: relative;
+}
+
+/* A second, tinted card hanging 1rem below the about card (whose own 1.5rem
+   bottom margin sits inside the anchor). Being out of flow, it neither shifts
+   the centered about card nor pushes anything when it expands. */
+.updates-card {
+  position: absolute;
+  top: calc(100% - 0.5rem);
+  left: 0;
+  right: 0;
+  padding: 1rem 1.5rem;
+  border-radius: 16px;
+  background-color: #eef8fc;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Small grey heading at the top of a card */
+.section-label {
+  color: #999999;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+.update-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.45;
+  overflow-y: auto;
+}
+
+/* Scrollbars are hidden site-wide, so fade the last line to hint at more. */
+.update-list.fade-end {
+  -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent);
+  mask-image: linear-gradient(to bottom, #000 80%, transparent);
+}
+
+.update-item {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.update-item + .update-item {
+  margin-top: 0.2rem;
+}
+
+.update-date {
+  flex: 0 0 4rem;
+  color: #888888;
+  font-variant-numeric: tabular-nums;
+}
+
+.updates-card .section-label {
+  margin-bottom: 0.5rem;
+}
+
+.update-toggle {
+  margin-top: 0.35rem;
+  font-size: 12px;
+}
+
+@media only screen and (max-width: 900px) {
+  /* The stacked page scrolls as a whole and already grows downward, so the
+     updates card can just follow the about card. */
+  .updates-card {
+    position: static;
+    margin: -0.5rem 0 1.5rem;
+  }
+}
+
 /* Keep the card's inner gap even on all four sides. Bootstrap 4 rows carry
    -15px side margins that eat into the card padding, and the trailing row's
    mb-4 doubles the gap at the bottom. */
@@ -576,6 +662,12 @@ a:hover {
   text-decoration: underline;
 }
 
+/* No focus ring from mouse clicks (Bootstrap adds one); keyboard focus
+   still gets the ring below. */
+.project-toggle:focus:not(:focus-visible) {
+  outline: none;
+}
+
 .project-toggle:focus-visible {
   outline: 2px solid #63c2e8;
   outline-offset: 2px;
@@ -596,6 +688,17 @@ a:hover {
 
 .project-toggle.open .project-caret {
   transform: rotate(0deg);
+}
+
+/* The updates list opens below its button, so its caret points down to see
+   more and up to see less. Must follow the rules above, which tie on
+   specificity. */
+.update-toggle .project-caret {
+  transform: rotate(0deg);
+}
+
+.update-toggle.open .project-caret {
+  transform: rotate(180deg);
 }
 
 .project-panel {
