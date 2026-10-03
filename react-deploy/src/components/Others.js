@@ -27,7 +27,7 @@ const Others = () => {
         and have been learning Japanese.
       </p>
       <p className="mb-0">
-        Some random projects from college (pre-AI software engineering was fun):{" "}
+        Some random projects from college:{" "}
         {PROJECTS.map(({ id, label }, i) => (
           <React.Fragment key={id}>
             {i > 0 && ", "}
