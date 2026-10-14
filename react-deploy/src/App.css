@@ -623,9 +623,10 @@ a:hover {
   border: 1px solid #a8dcf2;
 }
 
-/* Awards get a light yellow border instead */
+/* Awards get a light yellow border and orange-yellow text instead */
 .tag-award {
   border-color: #f3d780;
+  color: #d68a00;
 }
 
 /* Outbound resource links are plain underlined text */
@@ -731,4 +732,47 @@ a:hover {
 .underline-button:focus,
 .underline-button:active {
   outline: none;
+}
+
+/* "selected / all" switch at the top of the research card. Inherits the
+   grey label styling; the active filter is underlined. */
+.filter-toggle {
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.filter-toggle:hover {
+  color: #666666;
+}
+
+.filter-toggle.active {
+  color: #666666;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.filter-toggle:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.filter-toggle:focus-visible {
+  outline: 2px solid #63c2e8;
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* Paper thumbnails: an 80px square, with non-square images fitted inside
+   on a white fill rather than stretched. */
+.paper-thumb {
+  flex: 0 0 80px;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  background-color: #ffffff;
 }

@@ -81,8 +81,9 @@ const App = () => {
     return () => document.removeEventListener("click", onDocumentClick);
   }, [addBgBurst]);
 
-  // The "*" tab can grow tall once projects are expanded, so let it scroll.
-  const appClass = `App${content === 3 ? " scroll-page" : ""}`;
+  // The research list and the "*" tab (once projects are expanded) can grow
+  // taller than the viewport, so the right side scrolls while the left stays put.
+  const appClass = `App${content === 1 || content === 3 ? " scroll-page" : ""}`;
 
   return (
     <div className={appClass}>
